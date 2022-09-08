@@ -34,8 +34,16 @@ export default function Home() {
     setPixels(newPixels);
   };
 
-  const playDisgo = () => {
-    setInterval(random, 500);
+  const [ids, setIds] = useState([]);
+
+  const playDisco = () => {
+    const id = setInterval(random, 1000);
+    setInterval(id);
+    setIds([...id, ids]);
+  };
+
+  const stopDisco = () => {
+    for (const id of ids) clearInterval(id);
   };
 
   return (
@@ -52,8 +60,11 @@ export default function Home() {
           <button className="btn btn-dark" onClick={random}>
             Random Color
           </button>
-          <button className="btn btn-dark" onClick={playDisgo}>
-            PlayDisgo
+          <button className="btn btn-dark" onClick={playDisco}>
+            PlayDisco
+          </button>
+          <button className="btn btn-dark" onClick={stopDisco}>
+            StopDisco
           </button>
         </div>
       </PainterContext.Provider>
